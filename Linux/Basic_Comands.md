@@ -6,7 +6,7 @@ Linux commands are text-based instructions used in the terminal to control the o
 ### Ref:
 
 * [Gfg](https://www.geeksforgeeks.org/linux-unix/linux-commands-cheat-sheet/)
-* [Books](file:///D:/L3T1/SS/ROS/Robot%20Operating%20System%20for%20Absolute%20Beginners_%20Robotics%20Programming%20Made%20Easy%20(%20PDFDrive%20).pdf)
+* [Books][file:///D:/L3T1/SS/ROS/Robot%20Operating%20System%20for%20Absolute%20Beginners_%20Robotics%20Programming%20Made%20Easy%20(%20PDFDrive%20).pdf]
   
 
 ## 📁 1. File Operations Commands
