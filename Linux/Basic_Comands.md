@@ -7,242 +7,165 @@ Linux commands are text-based instructions used in the terminal to control the o
 
 * [Gfg](https://www.geeksforgeeks.org/linux-unix/linux-commands-cheat-sheet/)
 * [Books][file:///D:/L3T1/SS/ROS/Robot%20Operating%20System%20for%20Absolute%20Beginners_%20Robotics%20Programming%20Made%20Easy%20(%20PDFDrive%20).pdf]
-  
 
-## 📁 1. File Operations Commands
+## 1️⃣ File Operations Commands
 
-| Command | Function                  | Example (Syntax)               |                 |
-| ------- | ------------------------- | ------------------------------ | --------------- |
-| `cat`   | Display file content      | `cat file.txt`                 |                 |
-| `cp`    | Copy files/directories    | `cp file.txt backup.txt`       |                 |
-| `mv`    | Move or rename files      | `mv old.txt new.txt`           |                 |
-| `rm`    | Delete files/directories  | `rm file.txt`                  |                 |
-| `touch` | Create empty file         | `touch newfile.txt`            |                 |
-| `file`  | Show file type            | `file document.pdf`            |                 |
-| `head`  | Show first lines          | `head -n 5 file.txt`           |                 |
-| `tail`  | Show last lines           | `tail -n 10 file.txt`          |                 |
-| `diff`  | Compare files             | `diff file1.txt file2.txt`     |                 |
-| `grep`  | Search text pattern       | `grep "error" file.txt`        |                 |
-| `sort`  | Sort content              | `sort names.txt`               |                 |
-| `cut`   | Extract columns           | `cut -d "," -f1 data.csv`      |                 |
-| `tee`   | Output to file + terminal | `ls                            | tee output.txt` |
-| `tar`   | Archive files             | `tar -cvf archive.tar folder/` |                 |
-| `zip`   | Compress files            | `zip file.zip file.txt`        |                 |
-| `unzip` | Extract zip archive       | `unzip file.zip`               |                 |
-| `ln`    | Create links              | `ln -s file.txt link.txt`      |                 |
-| `shred` | Securely delete file      | `shred file.txt`               |                 |
-| `wc`    | Word/line/byte count      | `wc file.txt`                  |                 |
+| Command | Function                  | Example + Syntax               | What Happens in Example                                                 |                                    |
+| ------- | ------------------------- | ------------------------------ | ----------------------------------------------------------------------- | ---------------------------------- |
+| `ls`    | List directory contents   | `ls -l`                        | Lists files in long format showing permissions, owner, size, timestamp. |                                    |
+| `cat`   | Display file content      | `cat file.txt`                 | Reads file and prints content to stdout.                                |                                    |
+| `cp`    | Copy files                | `cp file1.txt file2.txt`       | Creates duplicate of file1 as file2.                                    |                                    |
+| `mv`    | Move/Rename file          | `mv old.txt new.txt`           | Renames file without copying data.                                      |                                    |
+| `rm`    | Remove file               | `rm file.txt`                  | Deletes file permanently.                                               |                                    |
+| `touch` | Create empty file         | `touch new.txt`                | Creates empty file or updates timestamp.                                |                                    |
+| `file`  | Show file type            | `file image.png`               | Detects file type using magic numbers.                                  |                                    |
+| `diff`  | Compare files             | `diff a.txt b.txt`             | Shows line differences between files.                                   |                                    |
+| `head`  | Show first lines          | `head -5 file.txt`             | Prints first 5 lines.                                                   |                                    |
+| `tail`  | Show last lines           | `tail -f log.txt`              | Continuously monitors file updates.                                     |                                    |
+| `grep`  | Search text pattern       | `grep "error" log.txt`         | Filters lines containing "error".                                       |                                    |
+| `sort`  | Sort file content         | `sort names.txt`               | Arranges lines alphabetically.                                          |                                    |
+| `wc`    | Count words/lines         | `wc -l file.txt`               | Counts number of lines.                                                 |                                    |
+| `tee`   | Output to file + terminal | `ls                            | tee list.txt`                                                           | Displays output and saves to file. |
+| `tar`   | Archive files             | `tar -cvf archive.tar folder/` | Creates archive without compression.                                    |                                    |
+| `zip`   | Compress files            | `zip file.zip file.txt`        | Compresses file into zip archive.                                       |                                    |
 
 ---
 
-## 📂 2. Directory Operations Commands
+## 2️⃣ Directory Operations
 
-| Command   | Function               | Example                |
-| --------- | ---------------------- | ---------------------- |
-| `pwd`     | Show current path      | `pwd`                  |
-| `cd`      | Change directory       | `cd /home/user`        |
-| `ls`      | List directory content | `ls -l`                |
-| `mkdir`   | Create directory       | `mkdir project`        |
-| `rmdir`   | Remove empty directory | `rmdir folder`         |
-| `tree`    | Show directory tree    | `tree`                 |
-| `du`      | Show directory size    | `du -sh folder`        |
-| `find`    | Search files           | `find . -name "*.txt"` |
-| `locate`  | Fast file search       | `locate file.txt`      |
-| `dirname` | Extract directory path | `dirname /home/a.txt`  |
+| Command | Function               | Example                | What Happens                      |
+| ------- | ---------------------- | ---------------------- | --------------------------------- |
+| `pwd`   | Show current directory | `pwd`                  | Displays absolute path.           |
+| `cd`    | Change directory       | `cd /home/user`        | Moves shell session to directory. |
+| `mkdir` | Create directory       | `mkdir project`        | Creates new directory.            |
+| `rmdir` | Remove empty directory | `rmdir test`           | Deletes empty directory only.     |
+| `find`  | Search files           | `find . -name "*.txt"` | Recursively finds .txt files.     |
+| `du`    | Disk usage             | `du -sh folder`        | Shows total size of folder.       |
 
 ---
 
-## 🔐 3. File Permission & Ownership Commands
+## 3️⃣ Permission & Ownership
 
-| Command  | Function               | Example                |
-| -------- | ---------------------- | ---------------------- |
-| `chmod`  | Change permissions     | `chmod 755 script.sh`  |
-| `chown`  | Change owner           | `chown user file.txt`  |
-| `chgrp`  | Change group           | `chgrp admin file.txt` |
-| `chattr` | Change file attributes | `chattr +i file.txt`   |
-
----
-
-## 👤 4. User Management Commands
-
-| Command   | Function          | Example                      |
-| --------- | ----------------- | ---------------------------- |
-| `useradd` | Create user       | `sudo useradd john`          |
-| `userdel` | Delete user       | `sudo userdel john`          |
-| `usermod` | Modify user       | `sudo usermod -aG sudo john` |
-| `passwd`  | Set password      | `passwd john`                |
-| `whoami`  | Show current user | `whoami`                     |
-| `id`      | Show user ID info | `id john`                    |
-| `who`     | Show logged users | `who`                        |
+| Command | Function           | Example                | What Happens                |
+| ------- | ------------------ | ---------------------- | --------------------------- |
+| `chmod` | Change permissions | `chmod 755 script.sh`  | Sets rwxr-xr-x permissions. |
+| `chown` | Change owner       | `chown user file.txt`  | Transfers ownership.        |
+| `chgrp` | Change group       | `chgrp admin file.txt` | Changes group ownership.    |
 
 ---
 
-## 👥 5. Group Management Commands
+## 4️⃣ User Management
 
-| Command    | Function              | Example              |
-| ---------- | --------------------- | -------------------- |
-| `groupadd` | Create group          | `sudo groupadd devs` |
-| `groupdel` | Delete group          | `sudo groupdel devs` |
-| `groups`   | Show user groups      | `groups john`        |
-| `gpasswd`  | Manage group password | `gpasswd devs`       |
-
----
-
-## ⚙️ 6. Process Management Commands
-
-| Command  | Function            | Example         |
-| -------- | ------------------- | --------------- |
-| `ps`     | Process snapshot    | `ps aux`        |
-| `top`    | Real-time processes | `top`           |
-| `htop`   | Interactive viewer  | `htop`          |
-| `kill`   | Terminate process   | `kill 1234`     |
-| `pidof`  | Get PID             | `pidof firefox` |
-| `bg`     | Run in background   | `bg %1`         |
-| `fg`     | Bring to foreground | `fg %1`         |
-| `time`   | Measure execution   | `time ls`       |
-| `watch`  | Repeat command      | `watch -n 2 df` |
-| `uptime` | Show uptime         | `uptime`        |
+| Command   | Function     | Example             | What Happens              |
+| --------- | ------------ | ------------------- | ------------------------- |
+| `useradd` | Add user     | `sudo useradd john` | Creates new account.      |
+| `userdel` | Delete user  | `sudo userdel john` | Removes account.          |
+| `passwd`  | Set password | `passwd john`       | Updates user password.    |
+| `whoami`  | Current user | `whoami`            | Displays active username. |
 
 ---
 
-## 🌐 7. Networking Commands
+## 5️⃣ Process Management
 
-| Command      | Function          | Example                        |
-| ------------ | ----------------- | ------------------------------ |
-| `ping`       | Test connectivity | `ping google.com`              |
-| `curl`       | Transfer via URL  | `curl https://example.com`     |
-| `wget`       | Download file     | `wget file_url`                |
-| `ssh`        | Remote login      | `ssh user@server`              |
-| `scp`        | Secure copy       | `scp file.txt user@host:/path` |
-| `rsync`      | Sync files        | `rsync -av src/ dest/`         |
-| `ip`         | Network config    | `ip addr`                      |
-| `netstat`    | Show connections  | `netstat -tuln`                |
-| `traceroute` | Trace path        | `traceroute google.com`        |
-| `nslookup`   | DNS query         | `nslookup google.com`          |
+| Command | Function             | Example       | What Happens                    |
+| ------- | -------------------- | ------------- | ------------------------------- |
+| `ps`    | Process snapshot     | `ps aux`      | Lists all running processes.    |
+| `top`   | Live process monitor | `top`         | Real-time CPU/memory usage.     |
+| `htop`  | Interactive monitor  | `htop`        | Enhanced visual process viewer. |
+| `kill`  | Terminate process    | `kill 1234`   | Sends SIGTERM to PID 1234.      |
+| `watch` | Repeat command       | `watch df -h` | Executes df every 2 seconds.    |
 
 ---
 
-## 📦 8. Package Management
+## 6️⃣ Networking Commands
 
-| Command   | Function                 | Example                |
-| --------- | ------------------------ | ---------------------- |
-| `apt`     | Manage packages (Debian) | `sudo apt install git` |
-| `apt-get` | Package tool             | `sudo apt-get update`  |
-| `dnf`     | Manage packages (RHEL)   | `sudo dnf install vim` |
-
----
-
-## ⏰ 9. Job Scheduling
-
-| Command   | Function                | Example                      |
-| --------- | ----------------------- | ---------------------------- |
-| `crontab` | Schedule recurring jobs | `crontab -e`                 |
-| `cron`    | Background scheduler    | `sudo systemctl status cron` |
-| `atq`     | View scheduled jobs     | `atq`                        |
-| `atrm`    | Remove scheduled job    | `atrm 2`                     |
+| Command | Function          | Example                   | What Happens                             |
+| ------- | ----------------- | ------------------------- | ---------------------------------------- |
+| `ping`  | Test connectivity | `ping google.com`         | Sends ICMP packets to test reachability. |
+| `curl`  | Transfer data     | `curl example.com`        | Fetches webpage content.                 |
+| `wget`  | Download files    | `wget file.url`           | Downloads remote file.                   |
+| `ssh`   | Remote login      | `ssh user@host`           | Opens secure remote shell.               |
+| `scp`   | Secure copy       | `scp file user@host:/dir` | Transfers file over SSH.                 |
 
 ---
 
-## 💽 10. Disk & File System
+## 7️⃣ Package Management
 
-| Command | Function            | Example                |
-| ------- | ------------------- | ---------------------- |
-| `df`    | Disk usage          | `df -h`                |
-| `du`    | Directory size      | `du -sh folder`        |
-| `mount` | Mount filesystem    | `mount /dev/sdb1 /mnt` |
-| `fdisk` | Partition disk      | `sudo fdisk /dev/sda`  |
-| `sync`  | Flush write buffers | `sync`                 |
+| Command | Function             | Example                | What Happens          |
+| ------- | -------------------- | ---------------------- | --------------------- |
+| `apt`   | Manage packages      | `sudo apt update`      | Updates package list. |
+| `dnf`   | RHEL package manager | `sudo dnf install git` | Installs git package. |
 
 ---
 
-## 🖥 11. System Information
+## 8️⃣ Disk & System Info
 
-| Command    | Function      | Example     |       |
-| ---------- | ------------- | ----------- | ----- |
-| `uname`    | System info   | `uname -a`  |       |
-| `hostname` | Show hostname | `hostname`  |       |
-| `free`     | Memory usage  | `free -h`   |       |
-| `dmesg`    | Kernel logs   | `dmesg      | less` |
-| `lsusb`    | USB devices   | `lsusb`     |       |
-| `lshw`     | Hardware info | `sudo lshw` |       |
-
----
-
-## 📝 12. Text Processing
-
-| Command | Function         | Example                      |
-| ------- | ---------------- | ---------------------------- |
-| `awk`   | Pattern scanning | `awk '{print $1}' file.txt`  |
-| `sed`   | Stream editor    | `sed 's/old/new/g' file.txt` |
-| `tr`    | Translate chars  | `tr a-z A-Z < file.txt`      |
-| `fmt`   | Format text      | `fmt file.txt`               |
+| Command  | Function        | Example    | What Happens                     |
+| -------- | --------------- | ---------- | -------------------------------- |
+| `df`     | Disk free space | `df -h`    | Shows disk usage human-readable. |
+| `du`     | Directory size  | `du -sh *` | Displays size of each folder.    |
+| `uname`  | System info     | `uname -a` | Kernel + architecture info.      |
+| `free`   | Memory usage    | `free -h`  | Displays RAM usage.              |
+| `uptime` | System uptime   | `uptime`   | Shows running duration + load.   |
 
 ---
 
-## 🔄 13. IO Redirection
+## 9️⃣ IO Redirection
 
-| Syntax | Function            | Example            |
-| ------ | ------------------- | ------------------ |
-| `>`    | Redirect output     | `ls > file.txt`    |
-| `>>`   | Append output       | `ls >> file.txt`   |
-| `<`    | Redirect input      | `sort < file.txt`  |
-| `2>`   | Redirect error      | `cmd 2> error.txt` |
-| `&>`   | Redirect all output | `cmd &> all.txt`   |
-
----
-
-## 🌍 14. Environment Variables
-
-| Command    | Function         | Example                       |
-| ---------- | ---------------- | ----------------------------- |
-| `export`   | Set variable     | `export PATH=$PATH:/new/path` |
-| `env`      | Show variables   | `env`                         |
-| `unset`    | Remove variable  | `unset VAR`                   |
-| `printenv` | Display variable | `printenv PATH`               |
+| Syntax | Function        | Example               | Result                 |
+| ------ | --------------- | --------------------- | ---------------------- |
+| `>`    | Redirect output | `ls > out.txt`        | Overwrites file.       |
+| `>>`   | Append output   | `echo hi >> file.txt` | Appends text.          |
+| `<`    | Redirect input  | `sort < file.txt`     | Uses file as input.    |
+| `2>`   | Redirect error  | `ls wrong 2> err.txt` | Stores error output.   |
+| `&>`   | Redirect all    | `cmd &> all.txt`      | Saves stdout + stderr. |
 
 ---
 
-## ✍ 15. Text Editors
+## 🔟 Environment Variables
 
-| Editor  | Function                 | Example          |
-| ------- | ------------------------ | ---------------- |
-| `nano`  | Beginner-friendly editor | `nano file.txt`  |
-| `vi`    | Classic editor           | `vi file.txt`    |
-| `vim`   | Advanced vi              | `vim file.txt`   |
-| `emacs` | Extensible editor        | `emacs file.txt` |
-
----
-
-## ⌨ Bash Shortcuts
-
-| Shortcut   | Function          |
-| ---------- | ----------------- |
-| `Ctrl + A` | Beginning of line |
-| `Ctrl + E` | End of line       |
-| `Ctrl + C` | Terminate command |
-| `Ctrl + R` | Search history    |
-| `Ctrl + L` | Clear screen      |
+| Command  | Function        | Example                 | What Happens                        |
+| -------- | --------------- | ----------------------- | ----------------------------------- |
+| `export` | Set variable    | `export PATH=/new/path` | Updates environment variable.       |
+| `env`    | List variables  | `env`                   | Displays all environment variables. |
+| `unset`  | Remove variable | `unset PATH`            | Deletes variable.                   |
 
 ---
 
-## 🛠 Development Commands
+## 1️⃣1️⃣ Bash Shortcuts
 
-| Command | Function         | Example                |
-| ------- | ---------------- | ---------------------- |
-| `gcc`   | Compile C        | `gcc main.c -o main`   |
-| `g++`   | Compile C++      | `g++ main.cpp -o main` |
-| `gdb`   | Debugger         | `gdb ./a.out`          |
-| `make`  | Build automation | `make`                 |
+| Shortcut | Action                 |
+| -------- | ---------------------- |
+| Ctrl + A | Move to start of line  |
+| Ctrl + E | Move to end of line    |
+| Ctrl + C | Stop running command   |
+| Ctrl + R | Search command history |
+| Ctrl + L | Clear screen           |
+
+---
+
+## 1️⃣2️⃣ Text Editors
+
+| Editor | Usage                    | Example          |
+| ------ | ------------------------ | ---------------- |
+| nano   | Beginner-friendly editor | `nano file.txt`  |
+| vi     | Classic editor           | `vi file.txt`    |
+| vim    | Advanced vi              | `vim file.txt`   |
+| emacs  | Feature-rich editor      | `emacs file.txt` |
 
 ---
 
-## 📖 Help Commands
+# ⚡ Quick Summary
 
-| Command   | Function          | Example        |
-| --------- | ----------------- | -------------- |
-| `man`     | Manual            | `man ls`       |
-| `help`    | Built-in help     | `help cd`      |
-| `which`   | Show command path | `which python` |
-| `history` | Command history   | `history`      |
+* Linux commands allow fast, scriptable OS control
+* File commands manage data (cp, mv, rm)
+* Process tools monitor performance (ps, top)
+* Networking tools enable remote access (ssh, scp)
+* Permissions ensure security (chmod, chown)
+* IO redirection controls data flow
+* Package managers install/update software
+* Shell shortcuts improve speed
+* Text editors enable terminal-based file editing
+* Automation possible via scripting + scheduling
 
----
+
