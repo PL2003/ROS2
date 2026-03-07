@@ -1,4 +1,4 @@
-````markdown
+
 # C++ Programming on Linux (Ubuntu) — Beginner Friendly README
 
 This guide explains the **fundamentals of C++ development on Linux** with clear explanations, command syntax, code examples, and real-life analogies.  
@@ -26,7 +26,7 @@ A compiler translates human-written code into machine instructions.
 A compiler is like a **language translator** converting English into another language so a machine can understand it.
 
 ---
-
+````
 ## 1.1 Update Ubuntu Packages
 
 ### Command
