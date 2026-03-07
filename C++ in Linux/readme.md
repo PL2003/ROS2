@@ -477,34 +477,9 @@ int main()
 
 ---
 
-# 7. File Handling in C++
+# 7. C++ File Read / Write Program
 
-File operations allow programs to **store data permanently**.
-
-**Example:**
-Saving robot configuration parameters.
-
----
-
-## Libraries
-
-```
-#include <fstream>
-```
-
----
-
-## File Types
-
-| Class    | Purpose    |
-| -------- | ---------- |
-| ofstream | write file |
-| ifstream | read file  |
-| fstream  | read/write |
-
----
-
-## Example Code
+## Code
 
 ```cpp
 #include <iostream>
@@ -530,23 +505,245 @@ int main()
 
     inFile.close();
 }
+````
+
+---
+
+# 7.1 Purpose of the Program
+
+This program:
+
+1. Creates a file
+2. Writes data to the file
+3. Reads the data from the file
+4. Prints the data to the terminal
+
+### Real Life Example
+
+Imagine a **robot saving its configuration** (Robot ID) into a file and later reading it when the system starts.
+
+---
+
+# 7.2 Header Files
+
+```cpp
+#include <iostream>
+```
+
+Provides **input/output operations**.
+
+Examples:
+
+* `cout` → print output
+* `cin` → take input
+
+---
+
+```cpp
+#include <fstream>
+```
+
+Provides **file stream classes**.
+
+| Class    | Purpose    |
+| -------- | ---------- |
+| ofstream | write file |
+| ifstream | read file  |
+| fstream  | read/write |
+
+---
+
+# 7.3 Namespace
+
+```cpp
+using namespace std;
+```
+
+Allows access to standard library objects without writing `std::`.
+
+Without namespace:
+
+```cpp
+std::cout << "Hello";
 ```
 
 ---
 
-# 8. Namespaces in C++
+# 7.4 Creating Output File Stream
 
-Namespaces prevent **name conflicts**.
+```cpp
+ofstream outFile;
+```
 
-Example problem:
+### Syntax
 
-Two libraries have function `print()`.
+```
+ofstream object_name;
+```
 
-Namespaces keep them separate.
+### Meaning
+
+Creates an object of **output file stream**.
+
+Purpose: write data to files.
 
 ---
 
-## Example
+# 7.5 Opening a File
+
+```cpp
+outFile.open("config.txt");
+```
+
+### Syntax
+
+```
+fileObject.open("filename");
+```
+
+### What Happens
+
+1. File `config.txt` is created if it does not exist.
+2. If it exists, it is opened for writing.
+
+---
+
+# 7.6 Writing Data to File
+
+```cpp
+outFile << "Robot_ID=1" << endl;
+```
+
+### Syntax
+
+```
+fileObject << data;
+```
+
+### Explanation
+
+| Element        | Meaning                   |
+| -------------- | ------------------------- |
+| `<<`           | stream insertion operator |
+| `"Robot_ID=1"` | data written to file      |
+| `endl`         | newline                   |
+
+### Result in File
+
+```
+Robot_ID=1
+```
+
+---
+
+# 7.7 Closing the File
+
+```cpp
+outFile.close();
+```
+
+### Purpose
+
+* Saves data
+* Releases file resources
+
+**Important rule:** Always close files after writing.
+
+---
+
+# 7.8 Creating Input File Stream
+
+```cpp
+ifstream inFile;
+```
+
+### Syntax
+
+```
+ifstream object_name;
+```
+
+Used to **read data from files**.
+
+---
+
+# 7.9 Creating Variable to Store Data
+
+```cpp
+string data;
+```
+
+Stores the data read from file.
+
+---
+
+# 7.10 Opening File for Reading
+
+```cpp
+inFile.open("config.txt");
+```
+
+Opens the file created earlier.
+
+---
+
+# 7.11 Reading Data
+
+```cpp
+inFile >> data;
+```
+
+### Syntax
+
+```
+fileObject >> variable;
+```
+
+Reads file content and stores it into variable.
+
+---
+
+# 7.12 Printing the Data
+
+```cpp
+cout << data << endl;
+```
+
+Output
+
+```
+Robot_ID=1
+```
+
+---
+
+# 7.13 Program Execution Flow
+
+```
+Start
+ ↓
+Create output file stream
+ ↓
+Open file config.txt
+ ↓
+Write Robot_ID=1
+ ↓
+Close file
+ ↓
+Open same file for reading
+ ↓
+Read data
+ ↓
+Print data
+ ↓
+End
+```
+
+---
+
+# 8. Namespace Example
+
+## Code
 
 ```cpp
 namespace RobotA
@@ -566,24 +763,99 @@ namespace RobotB
 }
 ```
 
-Usage:
+---
+
+# 8.1 Purpose
+
+Namespaces avoid **name conflicts** when multiple libraries contain the same function name.
+
+---
+
+# 8.2 Namespace Syntax
 
 ```
+namespace NamespaceName
+{
+    code
+}
+```
+
+---
+
+# 8.3 Function Definition
+
+```cpp
+void move()
+```
+
+### Syntax
+
+```
+return_type function_name()
+```
+
+Here:
+
+| Part | Meaning                  |
+| ---- | ------------------------ |
+| void | function returns nothing |
+| move | function name            |
+
+---
+
+# 8.4 Two Functions with Same Name
+
+Both namespaces contain:
+
+```
+move()
+```
+
+But they belong to different namespaces.
+
+---
+
+# 8.5 Calling the Functions
+
+Example usage:
+
+```cpp
 RobotA::move();
 RobotB::move();
 ```
 
+### Explanation
+
+| Syntax           | Meaning                   |
+| ---------------- | ------------------------- |
+| `::`             | scope resolution operator |
+| `RobotA::move()` | call move from RobotA     |
+
 ---
 
-# 9. Exception Handling
+### Output
 
-Exceptions manage **unexpected runtime errors**.
-
-Example: division by zero.
+```
+RobotA moving
+RobotB moving
+```
 
 ---
 
-## Example
+### Real Life Analogy
+
+Two people named **Alex** working in different departments.
+
+```
+Engineering::Alex
+Marketing::Alex
+```
+
+---
+
+# 9. Exception Handling Example
+
+## Code
 
 ```cpp
 #include <iostream>
@@ -609,6 +881,78 @@ int main()
 }
 ```
 
+---
+
+# 9.1 Purpose
+
+Handles **runtime errors safely**.
+
+Example: division by zero.
+
+---
+
+# 9.2 Variables
+
+```cpp
+int a = 10;
+int b = 0;
+```
+
+Numbers for division.
+
+---
+
+# 9.3 Try Block
+
+```cpp
+try
+{
+    ...
+}
+```
+
+Code inside `try` is monitored for errors.
+
+---
+
+# 9.4 Throw Statement
+
+```cpp
+throw "Division by zero";
+```
+
+### Syntax
+
+```
+throw error_message;
+```
+
+Stops program and sends error to `catch`.
+
+---
+
+# 9.5 Catch Block
+
+```cpp
+catch(const char* msg)
+```
+
+### Syntax
+
+```
+catch(data_type variable)
+```
+
+Captures error thrown by `throw`.
+
+---
+
+# 9.6 Printing Error Message
+
+```cpp
+cout << msg;
+```
+
 Output
 
 ```
@@ -617,22 +961,32 @@ Division by zero
 
 ---
 
-# 10. Standard Template Library (STL)
+# 9.7 Execution Flow
 
-STL provides **ready-made data structures and algorithms**.
-
-Examples:
-
-| Container | Use            |
-| --------- | -------------- |
-| vector    | dynamic array  |
-| list      | linked list    |
-| queue     | FIFO structure |
-| stack     | LIFO structure |
+```
+Start
+ ↓
+a = 10
+b = 0
+ ↓
+try block starts
+ ↓
+check if b == 0
+ ↓
+throw error
+ ↓
+catch block executes
+ ↓
+print error
+ ↓
+End
+```
 
 ---
 
-## Example
+# 10. STL Vector Example
+
+## Code
 
 ```cpp
 #include <iostream>
@@ -648,6 +1002,136 @@ int main()
 
     cout << numbers[0];
 }
+```
+
+---
+
+# 10.1 STL Vector
+
+`vector` is a **dynamic array**.
+
+Difference from normal arrays:
+
+| Array      | Vector       |
+| ---------- | ------------ |
+| fixed size | dynamic size |
+
+---
+
+# 10.2 Include Vector Library
+
+```cpp
+#include <vector>
+```
+
+Allows use of STL vector container.
+
+---
+
+# 10.3 Creating Vector
+
+```cpp
+vector<int> numbers;
+```
+
+### Syntax
+
+```
+vector<data_type> name;
+```
+
+Example
+
+```
+vector<int>
+```
+
+Means vector storing integers.
+
+---
+
+# 10.4 Adding Elements
+
+```cpp
+numbers.push_back(10);
+```
+
+### Syntax
+
+```
+vector.push_back(value);
+```
+
+Adds element at end of vector.
+
+After execution:
+
+```
+numbers = [10]
+```
+
+---
+
+Next:
+
+```
+numbers.push_back(20)
+```
+
+Vector becomes
+
+```
+numbers = [10, 20]
+```
+
+---
+
+# 10.5 Accessing Elements
+
+```cpp
+numbers[0]
+```
+
+### Syntax
+
+```
+vector[index]
+```
+
+Index starts at **0**.
+
+So:
+
+```
+numbers[0] → 10
+```
+
+---
+
+# 10.6 Output
+
+```
+10
+```
+
+---
+
+# 10.7 Execution Flow
+
+```
+Start
+ ↓
+Create empty vector
+ ↓
+Add 10
+ ↓
+Add 20
+ ↓
+Access element 0
+ ↓
+Print 10
+ ↓
+End
 ```
 
 ---
