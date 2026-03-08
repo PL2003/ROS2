@@ -1668,6 +1668,466 @@ g++ add.cpp main.cpp -o main
 ```
 
 ---
+# Linux Makefile and CMake File Creation (C++ Build Process)
+
+Structured revision notes explaining **Linux Makefile creation and CMake build process** with syntax, workflow, and key concepts.
+
+---
+
+# 1. Build Systems in Linux (Overview)
+
+**Build systems** automate the process of converting **source code → executable program**.
+
+### Main Tools
+
+| Tool         | Purpose                                                     |
+| ------------ | ----------------------------------------------------------- |
+| **Makefile** | Automates compilation using `make`                          |
+| **CMake**    | Generates Makefiles automatically for cross-platform builds |
+
+**Typical compilation flow**
+
+```
+Source Code (.cpp)
+       ↓
+Compiler (g++)
+       ↓
+Object Files (.o)
+       ↓
+Linking
+       ↓
+Executable Program
+```
+
+---
+
+# 2. Linux Makefile
+
+## Definition
+
+A **Makefile** is a script used by the **`make` utility** to automate compilation and linking of programs.
+
+It describes:
+
+* How to compile files
+* Which files depend on others
+* How to create the final executable
+
+---
+
+# 3. Makefile Example Code
+
+```make
+CC = g++
+CFLAGS = -c
+SOURCES = main.cpp add.cpp
+OBJECTS = $(SOURCES:.cpp=.o)
+EXECUTABLE = main
+
+all: $(OBJECTS) $(EXECUTABLE)
+
+$(EXECUTABLE) : $(OBJECTS)
+        $(CC) $(OBJECTS) -o $@
+
+.cpp.o: *.h
+        $(CC) $(CFLAGS) $< -o $@
+
+clean :
+        -rm -f $(OBJECTS) $(EXECUTABLE)
+
+.PHONY: all clean
+```
+
+---
+
+# 4. Makefile Structure
+
+A Makefile follows the structure:
+
+```
+target : dependencies
+        command
+```
+
+Example:
+
+```
+program : main.o add.o
+        g++ main.o add.o -o program
+```
+
+Meaning:
+
+* To build **program**
+* First build **main.o and add.o**
+* Then run the command.
+
+---
+
+# 5. Explanation of Each Line
+
+## Compiler Definition
+
+```make
+CC = g++
+```
+
+**Meaning**
+
+* Defines the **compiler**.
+* `g++` is the **GNU C++ compiler**.
+
+---
+
+## Compiler Flags
+
+```make
+CFLAGS = -c
+```
+
+**Meaning**
+
+* `-c` → Compile only
+* Produces **object file (.o)** without linking.
+
+Example
+
+```
+g++ -c main.cpp
+```
+
+Output
+
+```
+main.o
+```
+
+---
+
+## Source Files
+
+```make
+SOURCES = main.cpp add.cpp
+```
+
+Defines all **C++ source files** in the project.
+
+---
+
+## Object Files
+
+```make
+OBJECTS = $(SOURCES:.cpp=.o)
+```
+
+### Syntax Explanation
+
+```
+$(variable:old=new)
+```
+
+Meaning:
+
+Replace `.cpp` with `.o`.
+
+Result:
+
+```
+main.o add.o
+```
+
+---
+
+## Executable Name
+
+```make
+EXECUTABLE = main
+```
+
+Defines the final **program name**.
+
+Output program will be:
+
+```
+main
+```
+
+---
+
+# 6. Main Build Rule
+
+```make
+all: $(OBJECTS) $(EXECUTABLE)
+```
+
+### Meaning
+
+When user runs:
+
+```
+make
+```
+
+Make builds:
+
+```
+main.o
+add.o
+main (executable)
+```
+
+---
+
+# 7. Linking Rule
+
+```make
+$(EXECUTABLE) : $(OBJECTS)
+        $(CC) $(OBJECTS) -o $@
+```
+
+### Syntax Elements
+
+| Symbol | Meaning          |
+| ------ | ---------------- |
+| `$@`   | Target name      |
+| `$<`   | First dependency |
+
+### Expanded Command
+
+```
+g++ main.o add.o -o main
+```
+
+Purpose:
+
+* Link object files
+* Produce executable **main**
+
+---
+
+# 8. Compilation Rule
+
+```make
+.cpp.o: *.h
+        $(CC) $(CFLAGS) $< -o $@
+```
+
+### Meaning
+
+Compile `.cpp` files into `.o` files.
+
+Expanded example:
+
+```
+g++ -c main.cpp -o main.o
+```
+
+Explanation:
+
+| Symbol | Meaning     |
+| ------ | ----------- |
+| `$<`   | input file  |
+| `$@`   | output file |
+
+---
+
+# 9. Clean Rule
+
+```make
+clean :
+        -rm -f $(OBJECTS) $(EXECUTABLE)
+```
+
+Purpose:
+
+Delete generated files.
+
+Command:
+
+```
+make clean
+```
+
+Removes:
+
+```
+main.o
+add.o
+main
+```
+
+---
+
+# 10. Phony Targets
+
+```make
+.PHONY: all clean
+```
+
+Prevents confusion if files named `all` or `clean` exist.
+
+Ensures these are **commands**, not files.
+
+---
+
+# 11. Building the Project
+
+### Step 1 — Save Makefile
+
+```
+Makefile
+```
+
+### Step 2 — Run Build Command
+
+```
+make
+```
+
+Process:
+
+```
+main.cpp
+add.cpp
+   ↓
+Compile
+   ↓
+main.o add.o
+   ↓
+Link
+   ↓
+main (executable)
+```
+
+---
+
+# 12. Running the Program
+
+Execute:
+
+```
+./main
+```
+
+`./` indicates program inside **current directory**.
+
+---
+
+# 13. CMake Build System
+
+## Definition
+
+**CMake** is a **cross-platform build system generator**.
+
+It automatically creates:
+
+* Makefiles
+* Visual Studio projects
+* Other build systems.
+
+---
+
+# 14. Installing CMake
+
+```
+sudo apt-get install cmake
+```
+
+---
+
+# 15. CMakeLists.txt Example
+
+```cmake
+cmake_minimum_required(VERSION 3.0)
+
+set(CMAKE_BUILD_TYPE Release)
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
+
+project(main)
+
+add_executable(
+       main
+       add.cpp
+       main.cpp
+)
+```
+
+---
+
+# 16. Explanation of CMake Commands
+
+## Minimum Version
+
+```cmake
+cmake_minimum_required(VERSION 3.0)
+```
+
+Ensures CMake version ≥ **3.0**.
+
+---
+
+## Build Type
+
+```cmake
+set(CMAKE_BUILD_TYPE Release)
+```
+
+Build mode options:
+
+| Mode    | Purpose           |
+| ------- | ----------------- |
+| Debug   | Debugging         |
+| Release | Optimized program |
+
+---
+
+## C++ Standard
+
+```cmake
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
+```
+
+Uses **C++14 standard**.
+
+---
+
+## Project Name
+
+```cmake
+project(main)
+```
+
+Defines project identifier.
+
+---
+
+## Create Executable
+
+```cmake
+add_executable(
+       main
+       add.cpp
+       main.cpp
+)
+```
+
+Meaning:
+
+Create executable **main** using:
+
+```
+add.cpp
+main.cpp
+```
+
+Equivalent compile command:
+
+```
+g++ add.cpp main.cpp -o main
+```
+
+---
 
 # 17. CMake Build Process
 
@@ -1762,22 +2222,5 @@ Build steps are automated instead of manual compilation.
 
 Large programs split into multiple files.
 
-### Reusability
 
-Build scripts reused across systems.
 
----
-
-# 20. Quick Revision Summary
-
-* **Makefile** automates C++ compilation using `make`.
-* Structure: `target : dependencies`.
-* `g++` compiles `.cpp` files into `.o` object files.
-* Linking combines `.o` files into executable.
-* `make clean` removes compiled files.
-* **CMake** generates Makefiles automatically.
-* `CMakeLists.txt` defines project configuration.
-* Build process: `cmake .. → make → ./program`.
-* Build folder keeps compiled files separate.
-
----
