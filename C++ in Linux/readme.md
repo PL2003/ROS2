@@ -1171,7 +1171,7 @@ int cal(int n1,int n2);
 };
 
 ```
-##add.cpp
+## add.cpp
 ```makefile
 #include "add.h"
 int add::cal(int a,int b){
@@ -1179,6 +1179,7 @@ int add::cal(int a,int b){
 }
 
 ```
+## main.cpp
 
 ```makefile
 #include"add.h"
