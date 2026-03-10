@@ -450,7 +450,7 @@ obj.execute("Hello Module")
 
 ---
 
-# 25. Python Serial Communication(REF)[https://www.instructables.com/Linux-Serial-Port-Communication-With-Arduino-Using/]
+# 25. Python Serial Communication[REF](https://www.instructables.com/Linux-Serial-Port-Communication-With-Arduino-Using/)
 
 Robots communicate with devices through:
 
