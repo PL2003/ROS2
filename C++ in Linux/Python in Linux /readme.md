@@ -1,4 +1,4 @@
-````markdown
+
 # Python Fundamentals for Robotics Programming (Linux/Ubuntu)
 
 Structured revision notes covering **Python basics, scripting, classes, file I/O, modules, serial communication, and robotics-related libraries**.  
@@ -450,7 +450,7 @@ obj.execute("Hello Module")
 
 ---
 
-# 25. Python Serial Communication
+# 25. Python Serial Communication(REF)[https://www.instructables.com/Linux-Serial-Port-Communication-With-Arduino-Using/]
 
 Robots communicate with devices through:
 
