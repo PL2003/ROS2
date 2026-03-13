@@ -255,6 +255,10 @@ ros2 topic pub <topic_name> <msg_type> '<args>'
 ```bash
 ros2 topic pub /turtle1/cmd_vel geometry_msgs/msg/Twist \
 "{linear: {x: 2.0, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 1.8}}"
+
+# linear : {x: 2.0, y: 0.0, z: 0.0} : going forward at 2.0 unit/s
+# angular: {x: 0.0, y: 0.0, z: 1.8} : rotates counter-clockwise (positive value) at a speed of 1.8 rad/s
+
 ```
 
 ### Explanation
