@@ -342,7 +342,26 @@ Example output
 ```
 
 ---
+ ## 14.1 Showing Action Info 
 
+### Syntax
+
+```bash
+ros2 action info /turtle1/rotate_absolute
+```
+
+Example output
+
+```
+Action: /turtle1/rotate_absolute
+Action clients: 1
+    /teleop_turtle
+Action servers: 1
+    /turtlesim
+```
+
+---
+ 
 # 15. Inspect Action Structure
 
 ### Syntax
