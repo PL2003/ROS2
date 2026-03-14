@@ -415,6 +415,28 @@ Example
 ros2 action send_goal /turtle1/rotate_absolute turtlesim/action/RotateAbsolute "{theta: 1.57}"
 ```
 
+Output
+
+```bash
+Sending goal:
+   theta: -1.57
+
+Goal accepted with ID: e6092c831f994afda92f0086f220da27
+# all goals will be flagged with unique id 
+Feedback:
+  remaining: -3.1268222332000732
+
+Feedback:
+  remaining: -3.1108222007751465
+
+…
+
+Result:
+  delta: 3.1200008392333984
+
+Goal finished with status: SUCCEEDED
+```
+
 Explanation:
 
 | Parameter   | Meaning            |
