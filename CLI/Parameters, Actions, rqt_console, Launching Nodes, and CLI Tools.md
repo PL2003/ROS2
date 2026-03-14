@@ -379,11 +379,16 @@ ros2 interface show turtlesim/action/RotateAbsolute
 Output
 
 ```
+
+# The desired heading in radians
 float32 theta
 ---
+# The angular displacement in radians to the starting position
 float32 delta
 ---
+# The remaining rotation in radians
 float32 remaining
+
 ```
 
 Explanation:
