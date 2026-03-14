@@ -321,33 +321,33 @@ std_srvs/srv/Empty
 
 ### 3.2.1 
 
-1. Empty
+#### 1. Empty
    ```
    (std_srvs/srv/Empty)
    ```
 Explanation: Used when the service call requires no input arguments (request) and produces no output data (response). It is only used to trigger an action (For clearing / resetting a simulation, triggering a camera snapshot)
 
-2. SetBool
+#### 2. SetBool
    ```
    ros2 service call /enable_robot std_srvs/srv/SetBool "{data: true}"
 
    ```
 Explanation:  A simple request-response service where the client sends a bool (true/false) to set a state, and the server returns a bool indicating success and a string message. (Enabling/Disabling a sensor / motor of robot)
 
-3. Trigger
+#### 3. Trigger
    ```
    (std_srvs/srv/Trigger)
    ```
 Explanation:  Similar to Empty, but the server returns a success boolean and a message string. It tells the client whether the triggered action worked. (Requesting a robot to take a reading and return its status.)
 
-4.AddTwoInts
+#### 4.AddTwoInts
  ```
    ros2 service call /add_two_ints example_interfaces/srv/AddTwoInts "{a: 10, b: 20}"
 
    ```
 Explanation:   A classic demonstration service. The request consists of two integers, and the response is their sum. (Simple mathematical computation requested from a server.)
 
-5.SetPen 
+#### 5.SetPen 
 ```
 ros2 service call /turtle1/set_pen turtlesim/srv/SetPen "{r: 255, g: 0, b: 0, width: 5}"
 
