@@ -462,10 +462,35 @@ colcon test
 
 # 📦 9. Creating a Package
 
+## What is a Package?
+Think of a package as a branded toolbox. Inside, you have the tools (code), the manual (metadata), and the assembly instructions (build files).
+
+## Package Anatomy (CMake vs. Python)
+While ROS 2 supports both, your reference focuses on CMake (C++). Here is what the skeleton of a simple CMake package looks like:
+
+* `package.xml:` The "ID Card." It tells ROS who made the package, what its name is, and what other packages it needs to work.
+
+* `CMakeLists.txt:` The "Assembly Instructions." It tells the compiler how to turn your C++ code into a runnable program.
+
+* `src/:` The "Workshop." This is where your .cpp source files live.
+
+* `include/:` The "Reference Library" for header files.
+
 ## 🧩 Command:
 
 ```bash
 ros2 pkg create --build-type ament_cmake --node-name my_node my_package
+```
+
+
+```output
+going to create a new package
+package name: my_package
+destination directory: /home/prattay/ros2_ws/src
+...
+creating ./my_package/package.xml
+creating ./my_package/CMakeLists.txt
+creating ./my_package/src/my_node.cpp
 ```
 
 ---
@@ -490,8 +515,42 @@ my_package/
  ├── src/
  └── include/
 ```
-
 ---
+# 10. Building and Running
+Once the package is created, you must "bake" it into an executable using colcon.
+
+Coding Part
+```Bash
+# 1. Go to workspace root
+cd ~/ros2_ws
+
+# 2. Build ONLY your new package (saves time)
+colcon build --packages-select my_package
+
+# 3. Source the overlay in a NEW terminal
+source install/local_setup.bash
+
+# 4. Run your node
+ros2 run my_package my_node
+```
+```
+Output:
+
+Plaintext
+hello world my_package package
+---
+```
+# 10. Customizing the "ID Card" (package.xml)
+
+When you create a package, ROS fills it with TODO placeholders. If you want to share your code (e.g., with Team MIE Robolution), you need to clean this up.
+
+Real-Life Scenario: This is like filling out a shipping label. If the label says "TODO," the post office (ROS community) won't know where it came from or who to ask if it breaks.
+
+The Tags to Know:
+* `<maintainer>:` Your name and email (Prattay).
+* `<license>:` We used Apache-2.0.
+* `<description>:` A short summary of what the robot part does.
+* `<_depend>:` These tags list the other toolboxes your robot needs (e.g., rclcpp for C++ logic).
 
 # 🧠 10. Key Principles
 
