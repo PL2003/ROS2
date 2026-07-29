@@ -1,29 +1,29 @@
 # File Structure of every system:
 
-• `/bin and /sbin`: Contains system applications similar
+* `/bin and /sbin`: Contains system applications similar
 to the C:\ Windows folder
-• `/etc`: Contains system configuration files
-• `/home/yourysername`: This is equivalent to the C:\Users
+* `/etc`: Contains system configuration files
+* `/home/yourysername`: This is equivalent to the C:\Users
 folder in Windows
-• `/lib`: Contains library files similar to .dll files in
+* `/lib`: Contains library files similar to .dll files in
 Windows
-• `/media`: Removable media is mounted in the directory
-• `/root`: Contains root user files (not the root user file
+* `/media`: Removable media is mounted in the directory
+* `/root`: Contains root user files (not the root user file
 system; root user is the administrator of the Linux
 system)
-• `/usr`: Pronounced user, it contains most of the program
+* `/usr`: Pronounced user, it contains most of the program
 files (equivalent to C:\Program Files in Microsoft
 Windows)
-• `/var/log`: Contains log files written by many
+* `/var/log`: Contains log files written by many
 applications
-• `/home/yourusername/Desktop`: Contains Ubuntu
+* `/home/yourusername/Desktop`: Contains Ubuntu
 desktop files
-• `/mnt`: The mounted partitions are shown here
-• `/boot`: Contains the files required to boot
-• `/dev`: Contains Linux device files
-• `/opt`: The location for optionally installed programs
+* `/mnt`: The mounted partitions are shown here
+* `/boot`: Contains the files required to boot
+* `/dev`: Contains Linux device files
+* `/opt`: The location for optionally installed programs
 (ROS is installed to /opt)
-• `/sys`: Holds the files containing information about the
+* `/sys`: Holds the files containing information about the
 system
 
 # 🐧 Linux Commands Cheat Sheet (2026)
